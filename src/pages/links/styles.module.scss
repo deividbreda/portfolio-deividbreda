@@ -1,0 +1,114 @@
+.container {
+    
+    .content {
+        margin: 64px auto;
+        padding: 0 20px;
+        max-width: 540px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            background: linear-gradient(45deg, #010409, #0c203c);
+            height: 194px;
+            width: 100%;
+            top: 0;
+            z-index: 1;
+        }
+        
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                width: 280px;
+                border-radius: 100%;
+                position: relative;
+                z-index: 1;
+                border: 4px solid #fff;
+            }
+
+            .text {
+                margin-top: 16px;
+
+                h1, p {
+                    text-align: center;
+                }
+
+                .linksHeader {
+                    margin-top: 32px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        color: #313131;
+
+                        i {
+                            color: #ccc;
+                            display: inherit;
+                            font-size: 22px;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            
+            a {
+                padding: 16px;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+
+                &.linkedin {
+                    background: #0a66c2;
+                    color: #fff; 
+                }
+
+                &.github {
+                    background: #161b22;
+                    color: #fff; 
+                }
+
+                &.portfolio {
+                    background: #e6e6e6;
+                    color: #000; 
+                }
+
+                &.instagram {
+                    background: linear-gradient(45deg, #c73184, #ef7c35);
+                    color: #fff; 
+                }
+
+                &.whatsapp {
+                    background: #29c345;
+                    color: #fff; 
+                }
+
+                transition: all .3s ;
+
+                &:hover {
+                    transform: scale(1.03);
+                }
+            }
+        }
+
+        span {
+            color: #ccc;
+        }
+    }
+}
