@@ -5,6 +5,14 @@
   outline: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 body, input, textarea, select, button {
   font: 400 1rem "Poppins", sans-serif; 
 }
