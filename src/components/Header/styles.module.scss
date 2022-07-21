@@ -37,8 +37,30 @@
 
                 p {
                     margin-top: 8px;
-                    font-size: 22px;
+                    font-size: 18px;
                     font-weight: 300;
+                }
+
+                div {
+                    display: flex;
+                    gap: 22px;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .redes {
+                        
+                        a {
+                            display: block;
+                            font-size: 28px;
+                            display: inherit;
+
+                            transition: all .3s;
+
+                            &:hover {
+                                transform: translateY(-4px);
+                            }
+                        }
+                    }    
                 }
             }
         }
@@ -168,6 +190,16 @@
 
                     h1 {
                         font-size: 22px
+                    }
+
+                    div {
+                        gap: 12px;
+
+                        .redes {
+                            a {
+                                font-size: 18px;
+                            }
+                        }
                     }
 
                     p {
