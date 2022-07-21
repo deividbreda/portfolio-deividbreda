@@ -15,8 +15,8 @@ export function Header() {
                             <div>
                                 <h1> Deivid Breda </h1>
                                 <div className={styles.redes}>
-                                    <a href="https://www.linkedin.com/in/deivid-breda-9b2507136/" target="_blank"> <FaLinkedinIn /> </a>
-                                    <a href="https://web.whatsapp.com/send?phone=5542991062425" target="_blank"> <FaWhatsapp /> </a>
+                                    <a href="https://www.linkedin.com/in/deivid-breda-9b2507136/"> <FaLinkedinIn /> </a>
+                                    <a href="https://web.whatsapp.com/send?phone=5542991062425"> <FaWhatsapp /> </a>
                                 </div>
                             </div>
 
