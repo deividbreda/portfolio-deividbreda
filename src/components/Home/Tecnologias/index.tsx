@@ -5,7 +5,11 @@ import { FaCheck } from "react-icons/fa";
 import { TecnologiasIcon } from './TecnologiasIcon';
 import { TecnologiasItem } from './TecnologiasItem';
 
-export function Tecnologias() {
+interface TecnologiasProps {
+    openModal: () => void
+}
+
+export function Tecnologias({ openModal }: TecnologiasProps) {
     return (
         <div className={styles.container}>
             <div className={styles.content} id="tecnologias">
@@ -20,7 +24,7 @@ export function Tecnologias() {
                                 <h1> Tecnologias 🛠️ </h1>
 
                                 <div data-aos="zoom-out-left" data-aos-duration="1200">
-                                    <TecnologiasItem />
+                                    <TecnologiasItem openModal={openModal} />
                                     <p> O React é uma biblioteca JavaScript com foco na renderização de interfaces gráficas de usuários em uma página web.</p>
                                     <p> Criada pela empresa Facebook (Meta), ela serve diariamente milhares de empresas do mercado, como por exemplo, Facebook, Instagram, Twitter, Discord, Tesla, Airbnb e entre outros.</p>
                                 </div>
