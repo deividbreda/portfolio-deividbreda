@@ -1,6 +1,6 @@
       .content {
-        margin: 64px auto;
-        padding: 0 20px;
+        margin: 0 auto;
+        padding: 64px 20px;
         max-width: 540px;
         display: flex;
         flex-direction: column;
@@ -35,6 +35,16 @@
 
                 h1, p {
                     text-align: center;
+                }
+
+                h1 {
+                    color: #020710;
+                    font-size: 32px;
+                    font-weight: bold;
+                }
+
+                p {
+                    color: #343434;
                 }
 
                 .linksHeader {
