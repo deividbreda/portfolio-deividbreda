@@ -1,0 +1,195 @@
+.container {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        background-image: url(https://www.noweb.io/assets/images/multiple-plus-choose-us.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100%;
+        width: 696px;
+        height: 200px;
+        left: -250px;
+        top: 106px;
+        opacity: 0.7;
+        transform: rotate(90deg);
+    }
+
+    .content {
+        padding-bottom: 32px;
+        overflow: hidden;
+        position: relative;
+        
+        .servicos {
+            padding: 32px 0;
+            position: relative;
+
+            &::before {
+                content: "";
+                height: 360px;
+                background: #f0f6fc;
+                transform: rotate(3deg);
+                width: 1800%;
+                position: absolute;
+                bottom: -250px;
+                left: -600%;
+                right: 0;             
+            }
+
+            .text {
+
+                &::before {
+                    content: "";
+                    background: #f0f6fc;
+                    height: 36px;
+                    width: 388px;
+                    position: absolute;
+                    top: 65px;
+                    right: 0;
+                    left: 0;
+                    z-index: 1;
+                    margin: 0 auto;
+                }
+
+                span, h1 {
+                    text-align: center;
+                    display: block;
+                    z-index: 2;
+                }
+        
+                span {
+                    font-size: 22px;
+                    color: #565656;
+                }
+        
+                h1 {
+                    font-size: 48px;
+                    font-weight: bold;
+                    color: #1d3452;
+                    position: relative;
+                }
+            }
+
+            .servico {
+                margin-top: 22wpx;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+                position: relative;
+                z-index: 2;
+
+                div {
+                    background: #fff;             
+                    padding: 46px 32px;
+                    height: 320px;
+                    border-bottom: 5px solid #a3c0dd;
+                    display: flex;
+                    flex-direction: column;
+
+                    i {
+                        color: #ffc01d;
+                        font-size: 42px;
+                        margin-bottom: 16px;
+                    }
+                    
+                    &.middle {
+                        margin-top: 32px;
+                    }
+
+                    &.last {
+                        margin-top: 64px;
+                    }
+
+                    strong {
+                        font-size: 32px;
+                        line-height: 1;
+                        color: #ffc01d;
+                    }
+
+                    p {
+                        color: #7b7b7b;
+                        font-size: 18px;
+                        line-height: 30px;
+                        margin-top: 16px;
+                    }
+                }
+            }
+
+            @media (max-width: 1169px) {
+                .servico {              
+                    div {
+                        height: 278px;
+
+                        i {
+                            font-size: 38px;
+                        }
+        
+                        strong {
+                            font-size: 22px;
+                        }
+                        
+                        p {
+                            font-size: 12px;
+                            line-height: unset;
+                        }
+                    }
+                }
+            }
+
+            @media (max-width: 700px) {
+                .servico {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0;
+
+                    div {
+                        padding: 32px;
+                        height: unset;
+                        text-align: center;
+                        
+                        p {
+                            font-size: 16px;
+                            line-height: unset;
+                        }
+
+                        &.middle {
+                            margin-top: 0px;
+                        }
+            
+                        &.last {
+                            margin-top: 0px;
+                        }
+                    }
+                }
+            }
+
+            @media (max-width: 445px) {
+
+                .text {
+
+                    &::before {
+                        height: 27px;
+                        top: 50px;
+                        width: 100%; 
+                    }
+
+                    span {
+                        font-size: 16px;
+                    }
+
+                    h1 {
+                        font-size: 32px;
+                        margin-bottom: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 940px) {
+        &::after {
+            content: unset;
+        }
+    }
+}

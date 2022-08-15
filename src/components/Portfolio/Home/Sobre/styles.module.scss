@@ -1,0 +1,77 @@
+.content {
+    padding-bottom: 64px;
+    padding-top: 128px;
+
+    .sobreMim {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        .text {
+            position: relative;
+
+            &::before {
+                content: "";
+                background: #f0f6fc;
+                height: 36px;
+                width: 100%;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                z-index: 1;
+            }
+
+            h1 {
+                font-size: 64px;
+                font-weight: bold;
+                color: #1d3452;
+                position: relative;
+                z-index: 2;
+
+            }
+        
+            p {
+                font-size: 16px;
+                margin-top: 16px;
+                text-align: left;
+                color: #5e5e5e;
+                line-height: 40px;
+            }
+        }
+    }
+
+    @media (max-width: 1169px) {
+        padding-bottom: 0;
+        
+
+        .sobreMim {
+            flex-direction: column;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    @media (max-width: 540px) {
+        .sobreMim {
+            .text {
+                &::before {
+                    height: 22px;
+                    top: 30px;
+                }
+
+                h1 {
+                    font-size: 32px;
+                    text-align: center;
+                }
+
+                p {
+                    line-height: 26px;
+                    font-size: 13px;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+}

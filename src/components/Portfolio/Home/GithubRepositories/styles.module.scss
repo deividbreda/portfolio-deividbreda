@@ -1,0 +1,86 @@
+.content {
+    padding: 64px 0;
+    padding-bottom: 240px;
+    background: #202730;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    margin-top: -1px;
+
+    h1 {
+        text-align: center;
+        color: #e3e3e3;
+        margin-bottom: 32px;
+        font-weight: 400;
+        font-size: 32px;
+    }
+
+    .repositorios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        position: relative;
+
+        img {
+            position: absolute;
+            left: -400px;
+            height: 800px;
+            z-index: 1;
+            opacity: 0.04;
+        }
+
+        .repositorio {
+            border: 1px solid #434a52;
+            border-radius: 6px;
+            padding: 28px 16px;
+            z-index: 2;
+            position: relative;
+
+            a:hover {
+                text-decoration: underline;
+                color: #58a6ff;
+            }
+
+            strong {
+                color: #58a6ff;
+                font-weight: 600;
+            }
+
+            p {
+                margin-top: 8px;
+                margin-bottom: 28px;
+                font-size: 13px;
+                color: #8b949e;
+                display: -webkit-box;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;              
+            }
+
+            span {
+                color: #ffed02;
+                font-size: 13px;
+                position: absolute;
+                bottom: 22px;
+            }
+        }
+    }
+
+    @media (max-width: 1169px) {
+        padding-top: 0px;
+        padding-bottom: 128px;
+    }
+
+    @media (max-width: 840px) {
+        .repositorios {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 580px) {
+        .repositorios {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

@@ -1,0 +1,391 @@
+.container {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        background-image: url(https://www.noweb.io/assets/images/multiple-plus-choose-us.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100%;
+        width: 696px;
+        height: 200px;
+        right: -250px;
+        bottom: 0;
+        opacity: 0.7;
+        transform: rotate(270deg);
+        z-index: 3;
+    }
+
+    .content {
+        padding: 128px 0;
+        padding-bottom: 242px;
+        background: #f0f6fc;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+
+        .tecnologias {
+
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 120px;
+                right: 56%;
+                background: #2c496e;
+                width: 1800%;
+                height: 540px;
+                z-index: 1;
+            }
+
+            &::after {
+                content: "";
+                height: 360px;
+                background: #202730;
+                transform: rotate(-3deg);
+                width: 1800%;
+                position: absolute;
+                bottom: -383px;
+                left: -600%;
+                right: 0;
+            }
+
+            .info {
+
+                display: flex;
+                gap: 64px;
+
+                position: relative;
+                z-index: 2;
+
+                .tecnologiasIcon {
+                    max-width: 524px;
+                    position: relative;
+
+                    .reactLogo {
+                        width: 100%;
+                        z-index: 3;
+                        position: relative;
+                    }
+
+                    .nextLogo {
+                        width: 230px;
+                        position: absolute;
+                        right: 36px;
+                        bottom: 108px;
+                    }
+
+                    .graphQlLogo {
+                        width: 200px;
+                        margin-left: 44px;
+                    }
+
+                    .jsLogo {
+                        width: 108px;
+                        position: absolute;
+                        left: -80px;
+                        bottom: 271px;
+                        z-index: 1;
+                    }
+                }
+
+                .text {
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        background: #d7ebff;
+                        height: 36px;
+                        width: 100%;
+                        position: absolute;
+                        top: 84px;
+                        right: 0;
+                        z-index: 1;
+                    }
+
+                    span {
+                        font-size: 22px;
+                        display: block;
+                        color: #565656;
+                    }
+
+                    h1 {
+                        font-size: 64px;
+                        font-weight: bold;
+                        position: relative;
+                        z-index: 2;
+                        margin-bottom: 16px;
+                        color: #1d3452;
+                    }
+
+                    .languages {
+                        margin-bottom: 22px;
+
+                        a {
+                            background: #1d3452;
+                            color: #fff;
+                            padding: 8px 16px;
+                            border-radius: 30px;
+                            display: inline-block;
+                            margin: 8px;
+                            margin-left: 0;
+
+                            transition: all .3s;
+
+                            &:hover {
+                                background: #a3c0dd;
+                                transform: translateY(-4px);
+                            }
+
+                            &.skills {
+                                background: #ededed;
+                                border: 2px solid #dddddd;
+                                color: #b0b0b0;
+                            }
+                        }
+                    }
+
+                    p {
+                        font-size: 18px;
+                        margin-bottom: 16px;
+                        line-height: 40px;
+                        color: #5e5e5e;
+                    }
+
+                    strong {
+                        font-size: 24px;
+                        font-weight: 600;
+                        margin-top: 32px;
+                        display: block;
+                        color: #1d3452;
+                    }
+
+                    ul {
+                        margin-top: 22px;
+                        list-style: none;
+                        color: #5e5e5e;
+
+                        li {
+                            margin-bottom: 28px;
+                            display: flex;
+                            gap: 12px;
+                            align-items: center;
+
+                            i {
+                                background: #a3c0dd;
+                                color: #ffffff;
+                                border-radius: 100%;
+                                padding: 8px;
+                                display: inherit;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+
+                @media (prefers-reduced-motion: no-preference) {
+
+                    .reactLogo,
+                    .graphQlLogo {
+                        animation: App-logo-spin infinite 20s linear;
+                    }
+                }
+
+                @keyframes App-logo-spin {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 1169px) {
+            padding-top: 32px;
+            padding-bottom: 146px;
+
+            .tecnologias {
+                &::before {
+                    content: unset;
+                }
+
+                &:after {
+                    bottom: -292px;
+                }
+
+                .info {
+                    flex-direction: column;
+                    gap: 32px;
+
+                    .text {
+                        p {
+                            text-align: justify;
+                        }
+                    }
+
+                    .tecnologiasIcon {
+                        .nextLogo {
+                            display: none;
+                        }
+
+                        .graphQlLogo {
+                            display: none;
+                        }
+
+                        .jsLogo {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 790px) {
+            .tecnologias {
+                &:after {
+                    bottom: -383px;
+                }
+            }
+        }
+
+        @media (max-width: 580px) {
+            .tecnologias {
+                .info {
+                    .text {
+                        &::after {
+                            top: 50px;
+                            height: 22px;
+                        }
+
+                        span {
+                            font-size: 16px;
+                            text-align: center;
+                        }
+
+                        h1 {
+                            font-size: 32px;
+                            text-align: center;
+                            margin-bottom: 16px;
+                        }
+
+                        .languages {
+                            display: block;
+                            text-align: center;
+
+                            a {
+                                margin: 6px;
+                                display: inline-block;
+                                font-size: 12px;
+                            }
+                        }
+
+                        p {
+                            line-height: 24px;
+                            font-size: 13px;
+                        }
+
+                        strong {
+                            font-size: 18px;
+                        }
+
+                        ul {
+                            li {
+                                font-size: 15px;
+
+                                i {
+                                    font-size: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 940px) {
+        &::after {
+            content: unset;
+        }
+    }
+}
+
+.modal {
+    width: 90%;
+    max-width: 576px;
+    background: #fff;
+    padding: 48px;
+    position: absolute;
+    max-height: 90%;
+    border-radius: 4px 4px 0 0;
+    overflow: auto;
+    margin: 6% 0;
+
+    h1 {
+        color: #1d3452;
+        margin-bottom: 16px;
+        font-weight: bold;
+        font-size: 32px;
+    }
+
+    ul {
+        list-style: none;
+
+        li {
+            font-size: 18px;
+            color: #5e5e5e;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 22px 0;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.overlayModal {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.reactModalClose {
+    position: absolute;
+    right: 26px;
+    top: 26px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    transition: filter 0.2s;
+
+    &:hover {
+        filter: brightness(0.8);
+    }
+}
+
+@media (max-width: 549px) {
+    .modal {
+        padding: 32px;
+
+        ul {
+            li {
+                font-size: 15px;
+                padding: 14px 0;
+            }
+        }
+    }
+}
