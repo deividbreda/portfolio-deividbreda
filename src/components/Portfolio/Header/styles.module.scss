@@ -1,70 +1,6 @@
 .container {
-    padding: 64px 0;
-    background: linear-gradient(45deg, #010409, #0c203c);
-    z-index: 6;
-    position: relative;
-
+    
     .content {
-        display: flex;
-        justify-content: space-between;
-        position: relative;
-
-        .info {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            position: relative;
-
-            img {
-                width: 380px;
-            }
-
-            .text {
-                background: #f0f6fc;
-                border-radius: 22px;
-                margin-left: 32px;
-                color: #151f2c;
-                padding: 32px;
-                position: absolute;
-                bottom: -128px;
-                left: 0;
-                right: -208px;
-
-                h1 {
-                    font-size: 32px;
-                    font-weight: 600;
-                }
-
-                p {
-                    margin-top: 8px;
-                    font-size: 18px;
-                    font-weight: 300;
-                }
-
-                div {
-                    display: flex;
-                    gap: 22px;
-                    justify-content: space-between;
-                    align-items: center;
-
-                    .redes {
-                        
-                        a {
-                            display: block;
-                            font-size: 28px;
-                            display: inherit;
-
-                            transition: all .3s;
-
-                            &:hover {
-                                transform: translateY(-4px);
-                            }
-                        }
-                    }    
-                }
-            }
-        }
-        
 
         .menu {
             display: flex;
@@ -169,61 +105,6 @@
         @media (max-width: 1000px) {
             .menu {
                 display: none;
-            }
-
-            .info {
-                position: unset;
-
-                .text {
-                    right: 0;
-                    margin-left: 0;
-                }
-            }
-
-            justify-content: center;
-        }
-
-        @media (max-width: 583px) {
-            .info {
-                .text {
-                    padding: 16px 22px;
-
-                    h1 {
-                        font-size: 22px
-                    }
-
-                    div {
-                        gap: 12px;
-
-                        .redes {
-                            a {
-                                font-size: 18px;
-                            }
-                        }
-                    }
-
-                    p {
-                        font-size: 16px;
-                    }
-                }
-            }
-        }
-
-        @media (max-width: 436px) {
-            .info {
-                img {
-                    width: 280px;
-                }
-
-                .text {
-                    h1 {
-                        font-size: 18px
-                    }
-
-                    p {
-                        font-size: 14px;
-                    }
-                }
             }
         }
     }

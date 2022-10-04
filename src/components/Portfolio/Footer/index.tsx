@@ -1,8 +1,7 @@
+import { Text } from "@chakra-ui/react"
+
 export function Footer(){
     return(
-        <span 
-            style={{textAlign: "center", display: "block", margin: "0 0 64px 0", color: "#ccc;"}}> 
-            Desenvolvido por eu mesmo! 😜 
-        </span>
+        <Text as="span" color="#ccc" display="block" textAlign="center" mb="64px"> Desenvolvido por eu mesmo! 😜 </Text>
     );
 }
