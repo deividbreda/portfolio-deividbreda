@@ -12,7 +12,7 @@ export function Publicados({url, img, titulo}: PublicadosProps){
     return(
         <>
             <div className={styles.publicado} data-aos="fade-up">
-                <a href={url} target="_blank" rel="noreferrer"> <Image src={`/images/${img}`} alt="" /> </a>
+                <a href={url} target="_blank" rel="noreferrer"> <Image src={`../../../../../../public/images/${img}`} alt="" /> </a>
                 <div className={styles.cover}>
                     <strong> {titulo} </strong>
                     <a target="_blank" rel="noreferrer" href={url}> Ver </a>
