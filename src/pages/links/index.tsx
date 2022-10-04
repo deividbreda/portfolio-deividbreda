@@ -16,7 +16,8 @@ export default function Links() {
                     <img src="https://avatars.githubusercontent.com/u/62572750?v=4" alt="" />
                     <div data-aos="fade-up" className={styles.text}>
                         <h1> Deivid Breda </h1>
-                        <p> Estudante de programação, cursando o 4° semestre de Engenharia de Software - UNICESUMAR. </p>                   
+                        <p> Desenvolvedor Web </p>         
+                        <p> 4° Semestre de Eng. de Software - UNICESUMAR </p>          
                     </div>
                 </header>
                     
