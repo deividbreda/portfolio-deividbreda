@@ -8,6 +8,8 @@ import '../styles/globals.scss'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '../styles/theme'
 import { LoginProvider } from '../hooks/useLogin'
+import { ApolloProvider } from '@apollo/client'
+import { client } from '../services/apollo'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -17,8 +19,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <LoginProvider>
-        <Component {...pageProps} />
-        
+        <ApolloProvider client={client}>
+          <Component {...pageProps} />
+        </ApolloProvider>
       </LoginProvider>
     </ChakraProvider>
   )
