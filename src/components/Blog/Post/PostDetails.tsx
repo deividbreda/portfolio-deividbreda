@@ -1,6 +1,8 @@
 import { Box, Flex, Image, Stack, Link as ChakraLink, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
+import { FaChevronLeft } from "react-icons/fa";
+
 export function PostDetails() {
     return (
         <Box position="relative">
@@ -21,6 +23,11 @@ export function PostDetails() {
                     justifyContent="center"
                 >
                     <Stack w="740px" mx="auto" px="20px">
+                        <Link href="/blog" passHref>
+                            <ChakraLink mb="28px" fontSize="32px" w="32px" _hover={{ transform: 'translateX(-8px)' }}>
+                                <FaChevronLeft />
+                            </ChakraLink>
+                        </Link>
                         <Link href="blog/pesquisa">
                             <ChakraLink>
                                 <Text as="span"
