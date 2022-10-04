@@ -1,23 +1,20 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import styles from '../styles.module.scss'
 
 interface PublicadosProps {
-    url: string,
+    title: string,
+    link: string,
     img: string,
-    titulo: string
 }
 
-export function Publicados({url, img, titulo}: PublicadosProps){
-    return(
-        <>
-            <div className={styles.publicado} data-aos="fade-up">
-                <a href={url} target="_blank" rel="noreferrer"> <Image src={`../../../../../../public/images/${img}`} alt="" /> </a>
-                <div className={styles.cover}>
-                    <strong> {titulo} </strong>
-                    <a target="_blank" rel="noreferrer" href={url}> Ver </a>
-                </div>
+export function Publicados(props: PublicadosProps) {
+
+    return (
+        <div className={styles.publicado} key={props.link} data-aos="fade-up">
+            <a href={props.link} target="_blank" rel="noreferrer"> <img src={props.img} alt="" /> </a>
+            <div className={styles.cover}>
+                <strong> {props.title} </strong>
+                <a target="_blank" rel="noreferrer" href={props.link}> Ver </a>
             </div>
-        </>
+        </div>
     );
 }

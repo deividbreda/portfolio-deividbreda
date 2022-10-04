@@ -1,9 +1,23 @@
 import { useEffect, useState } from "react";
 import { githubApi } from "../../../../services/axios";
+import { gql, useQuery } from "@apollo/client";
+
 import { Publicados } from "./Publicados";
 import { Repositorios } from "./Repositorios";
 
 import styles from './styles.module.scss'
+
+const GET_PROJECTS_QUERY = gql`
+    query MyQuery {
+        publicProjects {
+            title
+            link
+            img {
+                url
+            }
+        }
+    }
+`
 
 export interface RepositorioProps {
     name: string,
@@ -14,11 +28,13 @@ export interface RepositorioProps {
 }
 
 export function GithubRepos() {
-    const [ repos, setRepos ] = useState([])
+    const [repos, setRepos] = useState([])
+
+    const { data } = useQuery(GET_PROJECTS_QUERY)
 
     useEffect(() => {
         githubApi.get('users/deividbreda/repos')
-        .then(response => setRepos(response.data))
+            .then(response => setRepos(response.data))
     }, [])
 
     return (
@@ -38,7 +54,16 @@ export function GithubRepos() {
                                 <h1> Publicados </h1>
                             </div>
                             <div className={styles.allPublicados}>
-                                <Publicados url={"https://pokedex-deividbreda.vercel.app/"} img={"pokedex.png"} titulo={"Pokedex"} />
+                                {data?.publicProjects.map(projeto => {
+                                    return (
+                                        <Publicados 
+                                            key={projeto.link}
+                                            title={projeto.title}
+                                            link={projeto.link}
+                                            img={projeto.img.url}
+                                        />
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
