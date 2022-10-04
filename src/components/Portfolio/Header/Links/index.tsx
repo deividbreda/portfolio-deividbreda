@@ -15,11 +15,6 @@ export function Links() {
                         <a> Contatos </a>
                     </Link>
                 </li>
-                <li className={styles.linkone}>
-                    <Link href="/blog">
-                        <a> Meu Blog </a>
-                    </Link>
-                </li>
             </ul>
         </div>
     );
