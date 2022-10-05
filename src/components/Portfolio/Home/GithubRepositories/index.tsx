@@ -1,23 +1,11 @@
 import { useEffect, useState } from "react";
 import { githubApi } from "../../../../services/axios";
-import { gql, useQuery } from "@apollo/client";
 
 import { Publicados } from "./Publicados";
 import { Repositorios } from "./Repositorios";
 
 import styles from './styles.module.scss'
-
-const GET_PROJECTS_QUERY = gql`
-    query MyQuery {
-        publicProjects {
-            title
-            link
-            img {
-                url
-            }
-        }
-    }
-`
+import { useGetProjectsQuery } from "../../../../graphql/generated";
 
 export interface RepositorioProps {
     name: string,
@@ -30,7 +18,7 @@ export interface RepositorioProps {
 export function GithubRepos() {
     const [repos, setRepos] = useState([])
 
-    const { data } = useQuery(GET_PROJECTS_QUERY)
+    const { data } = useGetProjectsQuery()
 
     useEffect(() => {
         githubApi.get('users/deividbreda/repos')

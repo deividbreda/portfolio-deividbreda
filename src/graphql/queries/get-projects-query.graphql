@@ -1,0 +1,9 @@
+query GetProjects {
+        publicProjects {
+            title
+            link
+            img {
+                url
+            }
+        }
+    }
