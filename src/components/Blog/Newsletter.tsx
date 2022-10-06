@@ -5,8 +5,8 @@ import { MdEmail } from "react-icons/md";
 export function Newsletter() {
     return (
         <Box bg="gray.400" py="64px">
-            <Box w="1170px" mx="auto" px="20px">
-                <Flex gap="32px" alignItems="center" justifyContent="space-between">
+            <Box maxW="1170px" mx="auto" px="20px" w="100%">
+                <Flex flexDir={['column', 'column', 'row']} gap="32px" alignItems="center" justifyContent="space-between">
                     <Flex flexDirection="column" gap="8px">
                         <Text color="gray.100" fontSize="28px" fontWeight="600"> Inscreva-se ao Newsletter </Text>
                         <Text color="gray.100" fontSize="16px" as="p"> Receba minhas postagens mais recentes diretamente no seu e-mail. </Text>

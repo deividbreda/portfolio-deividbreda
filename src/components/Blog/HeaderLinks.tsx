@@ -10,11 +10,13 @@ export function HeaderLinks() {
 
     return (
         <Box bg="gray.400">
-            <Box w="1170px" mx="auto" px="20px">
+            <Box maxW="1170px" mx="auto" px="20px" w="100%">
                 <Flex
                     py="16px"
                     justifyContent="space-between"
                     alignItems="center"
+                    flexDir={['column', 'row']}
+                    gap="16px"
                 >
                     <Link href="/" passHref>
                         <ChakraLink
@@ -34,8 +36,7 @@ export function HeaderLinks() {
                         </ChakraLink>
                     </Link>
 
-
-                    <ChakraLink onClick={handleOpenModalLogin}
+                    {/* <ChakraLink onClick={handleOpenModalLogin}
                         color="gray.900"
                         background="gray.200" p="8px 32px"
                         borderRadius="32px"
@@ -49,8 +50,7 @@ export function HeaderLinks() {
                         }}
                     >
                         ENTRAR <BiLogIn fontSize={18} />
-                    </ChakraLink>
-
+                    </ChakraLink> */}
                 </Flex>
             </Box>
         </Box>

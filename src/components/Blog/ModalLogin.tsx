@@ -32,7 +32,7 @@ export function ModalLogin({ isOpen, onClose }: ModalLoginProps) {
                     </Flex>
                 </FormControl>
 
-                <Text color="gray.400" fontSize="14px"> Ainda não tem uma conta? <Link href=""> Cadastre-se </Link></Text>
+                
             
                 
             </Flex>

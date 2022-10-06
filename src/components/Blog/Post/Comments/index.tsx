@@ -3,8 +3,8 @@ import { Comment } from "./Comment";
 
 export function Comments() {
     return (
-        <Stack bg="gray.200" p="48px">
-            <Box w="740px" mx="auto" px="20px">
+        <Stack bg="gray.200" py="48px">
+            <Box maxW="740px" mx="auto" px="20px" w="100%">
                 <Text
                     color="gray.800"
                     fontSize="32px"
@@ -24,8 +24,8 @@ export function Comments() {
                 > <Text as="span" zIndex="2" position="relative"> Comentários 💬 </Text> </Text>
                 <Stack gap="32px">
                     <Stack>
-                        <Flex py="32px" gap="32px" align="flex-start">
-                            <Avatar size="lg" />
+                        <Flex py="32px" gap={['16px','32px']} align="flex-start">
+                            <Avatar size={['md','lg']} />
                             <FormControl>
                                 <Stack w="100%">
                                     <Textarea placeholder="Sua mensagem..." color="gray.800" bg="white" h="50px" w="100%" resize="none" />
