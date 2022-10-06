@@ -1,50 +1,49 @@
-import { Box, Flex, Grid, GridItem, Image, Link as ChakraLink, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, GridItem, Image, Link as ChakraLink, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
-export function Featured() {
-    return (
-        <Grid templateColumns='repeat(2, 2fr)' gap="48px">
-            <GridItem>
-                <Link href="" passHref>
-                    <ChakraLink>
-                        <Flex _hover={{ transform: 'translateY(-6px)', transition: 'all .3s' }} transition="all .3s" position="relative" borderRadius="16px" overflow="hidden">
-                            <Image
-                                h="200px"
-                                w="100%"
-                                objectFit="cover"
-                                src="https://blog.sesisenai.org.br/wp-content/uploads/2021/09/shutterstock_329205053-scaled.jpg" />
-                            <Flex bg="black.transparent" position="absolute" top="0" bottom="0" right="0" left="0">
-                                <Box p="32px" position="relative">
-                                    <ChakraLink _hover={{ bg: 'gray.100' }} fontSize="12px" bg="gray.100.transparent" display="inline" color="gray.800" p="4px 12px" borderRadius="32px"> Carreira </ChakraLink>
-                                    <Text mt="16px" fontSize="22px"> Porque eu comecei a programar? </Text>
-                                    <Text color="gray.100.transparent" fontSize="12px" as="time" position="absolute" bottom="10"> 25 de fevereiro de 2022 </Text>
-                                </Box>
-                            </Flex>
-                        </Flex>
-                    </ChakraLink>
-                </Link>
-            </GridItem>
+import { BlogPostsProps } from "../../../pages/blog";
 
-            <GridItem>
-                <Link href="" passHref>
-                    <ChakraLink>
-                        <Flex _hover={{ transform: 'translateY(-6px)', transition: 'all .3s' }} transition="all .3s" position="relative" borderRadius="16px" overflow="hidden">
-                            <Image
-                                h="200px"
-                                w="100%"
-                                objectFit="cover"
-                                src="https://blog.sesisenai.org.br/wp-content/uploads/2021/09/shutterstock_329205053-scaled.jpg" />
-                            <Flex bg="black.transparent" position="absolute" top="0" bottom="0" right="0" left="0">
-                                <Box p="32px" position="relative">
-                                    <ChakraLink _hover={{ bg: 'gray.100' }} fontSize="12px" bg="gray.100.transparent" display="inline" color="gray.800" p="4px 12px" borderRadius="32px"> Carreira </ChakraLink>
-                                    <Text mt="16px" fontSize="22px"> Porque eu comecei a programar? </Text>
-                                    <Text color="gray.100.transparent" fontSize="12px" as="time" position="absolute" bottom="10"> 25 de fevereiro de 2022 </Text>
-                                </Box>
-                            </Flex>
+interface BlogStarProps {
+    post : {
+        slug: string,
+        title: string,
+        category: string,
+        image: string,
+        type: string,
+        data: string,
+        description: string
+    }
+}
+
+export function Featured({ post }: BlogStarProps) {
+    return (
+
+        <GridItem pos="relative">
+            <Link href={`/blog/${post.slug}`} passHref>
+                <ChakraLink>
+                    <Flex
+                        _hover={{ transform: 'translateY(-6px)', transition: 'all .3s' }}
+                        transition="all .3s" position="relative" borderRadius="16px"
+                        overflow="hidden"
+                    >
+                        <Image
+                            h="200px"
+                            w="100%"
+                            objectFit="cover"
+                            src={post.image}
+                        />
+
+                        <Flex bg="black.transparent" position="absolute" top="0" bottom="0" right="0" left="0">
+                            <Box p="32px" position="relative">
+                                <Text _hover={{ bg: 'gray.100', transition: 'all .3s' }} transition="all .3s" fontSize="12px" bg="gray.100.transparent" display="inline" color="gray.800" p="4px 12px" borderRadius="32px">{post.category} </Text>
+                                <Text mt="16px" fontSize={['16px', '22px']}> {post.title} </Text>
+                                <Text color="gray.100.transparent" fontSize="12px" as="time" position="absolute" bottom="10"> {post.data} </Text>
+                            </Box>
                         </Flex>
-                    </ChakraLink>
-                </Link>
-            </GridItem>
-        </Grid>
+                    </Flex>
+                </ChakraLink>
+            </Link>
+        </GridItem>
+
     );
 }

@@ -1,10 +1,25 @@
 import { Box, Stack, Text } from "@chakra-ui/react";
+import { MDXRemote } from "next-mdx-remote";
+import { PostProps } from "../../../pages/blog/[slug]";
 
-export function Content() {
+import styles from './styles.module.scss'
+
+export function Content({ post }: PostProps) {
     return (
-        <Box w="740px" mx="auto" px="20px">
+        <Box maxW="740px" mx="auto" px="20px" w="100%">
             <Stack p="64px 0">
-                <Text as="p" lineHeight="36px" color="#555" textAlign="justify"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </Text>
+                <Text
+
+                    lineHeight={['28px', '36px']}
+                    fontSize={['14px', '16px']}
+                    color="#555"
+                    textAlign="justify"
+                >
+
+                </Text>
+                <Box className={styles.content}>
+                    <MDXRemote {...post.source} />
+                </Box>
             </Stack>
         </Box>
     );

@@ -3,14 +3,16 @@ import Link from "next/link";
 
 import { FaChevronLeft } from "react-icons/fa";
 
-export function PostDetails() {
+import { PostProps } from "../../../pages/blog/[slug]";
+
+export function PostDetails({ post }: PostProps) {
     return (
         <Box position="relative">
             <Image
                 h="380px"
                 w="100%"
                 objectFit="cover"
-                src="https://blog.sesisenai.org.br/wp-content/uploads/2021/09/shutterstock_329205053-scaled.jpg" />
+                src={post.image} />
             <Box>
                 <Flex
                     position="absolute"
@@ -22,7 +24,7 @@ export function PostDetails() {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <Stack w="740px" mx="auto" px="20px">
+                    <Stack maxW="740px" mx="auto" px="20px" w="100%">
                         <Link href="/blog" passHref>
                             <ChakraLink mb="28px" fontSize="32px" w="32px" _hover={{ transform: 'translateX(-8px)' }}>
                                 <FaChevronLeft />
@@ -44,13 +46,13 @@ export function PostDetails() {
                                         transition: 'all .3s'
                                     }}
                                 >
-                                    Carreira
+                                    {post.category}
                                 </Text>
                             </ChakraLink>
                         </Link>
-                        <Text as="strong" fontSize="48px" color="white"> Titulo Post </Text>
-                        <Text as="span"> Breve descrição Post </Text>
-                        <Text as="time" pt="32px" opacity="0.6" fontSize="12px"> 12 de junho de 2022 </Text>
+                        <Text as="strong" fontSize={['32px','48px']} color="white"> {post.title} </Text>
+                        <Text as="span"> {post.description} </Text>
+                        <Text as="time" pt="32px" opacity="0.6" fontSize="12px"> {post.data} </Text>
                     </Stack>
                 </Flex>
             </Box>
