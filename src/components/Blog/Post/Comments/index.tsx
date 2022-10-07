@@ -1,7 +1,10 @@
 import { Avatar, Box, Button, Flex, FormControl, Stack, Text, Textarea } from "@chakra-ui/react";
+import { PostCommentProps } from "../../../../pages/blog/[slug]";
 import { Comment } from "./Comment";
 
-export function Comments() {
+export function Comments({ comments }: PostCommentProps) {
+    
+
     return (
         <Stack bg="gray.200" py="48px">
             <Box maxW="740px" mx="auto" px="20px" w="100%">
@@ -38,7 +41,16 @@ export function Comments() {
                         </Flex>
                     </Stack>
 
-                    <Comment />
+                    <Stack>
+                        {comments?.map(comment => {
+                            return (
+                                <Comment 
+                                key={comment.name}
+                                comment={comment}
+                                />
+                            )
+                        })}
+                    </Stack>
                 </Stack>
             </Box>
         </Stack>

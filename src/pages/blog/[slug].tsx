@@ -29,11 +29,24 @@ export interface PostProps {
         author: string,
         bio: string,
         avatar: string
-    }
+    },
+
+    comments: Comment[]
 }
 
-export default function Post({ post }: PostProps) {
+type Comment = {
+    name: string,
+    commentDesc: string,
+    data: string
+}
+
+export interface PostCommentProps {
+    comments: Comment[]
+}
+
+export default function Post({ post, comments }: PostProps) {
     const { handleCloseModalLogin, modalLogin } = useLogin();
+
 
     return (
         <>
@@ -44,10 +57,10 @@ export default function Post({ post }: PostProps) {
             <ModalLogin isOpen={modalLogin} onClose={handleCloseModalLogin} />
 
             <HeaderLinks />
-            <PostDetails post={post} />
-            <Content post={post} />
-            <Author post={post} />
-            <Comments />
+            <PostDetails post={post} comments={comments} />
+            <Content post={post} comments={comments} />
+            <Author post={post} comments={comments} />
+            <Comments comments={comments} />
             <Newsletter />
             <Footer />
         </>
@@ -57,8 +70,18 @@ export default function Post({ post }: PostProps) {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const slug = params.slug as string;
 
+    const queryComment = gql`
+        query MyQuery($slug: String!) {
+            comments(where: {post: {slug: $slug}}) {
+                name
+                commentDescription
+                createdAt
+            }
+        }
+    `
+
     const query = gql`
-        query Event($slug: String!) {
+        query Post($slug: String!) {
             post(where: { slug: $slug }) {
                 content {
                     html
@@ -82,6 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         } 
     `;
 
+    const dataComments = await client.request(queryComment, { slug })
     const data = await client.request(query, { slug })
 
     if (!data.post) {
@@ -111,23 +135,38 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         avatar: data.post.author.avatar.url
     }
 
+    const comments = dataComments.comments.map(comment => {
+        return {
+            name: comment.name,
+            commentDesc: comment.commentDescription,
+            data:  new Date(comment.createdAt).toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            }),
+        }
+    }) 
+
+    console.log(comments)
+    
     return {
         props: {
-            post: { ...post, source }
+            post: { ...post, source },
+            comments
         },
-        revalidate: 60 * 60 * 60
+        revalidate: 60
     }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const query = gql`
-        query Events {
+        query Posts {
             posts {
                 slug       
             }
         }
     `;
-
+  
     const data = await client.request(query)
 
     return {
