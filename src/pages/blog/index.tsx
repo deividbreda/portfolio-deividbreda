@@ -8,9 +8,7 @@ import { Newsletter } from "../../components/Blog/Newsletter";
 import { Footer } from "../../components/Blog/Footer";
 import { ModalLogin } from "../../components/Blog/ModalLogin";
 import { GetStaticProps } from "next";
-import { client } from "../../services/apollo";
-import { gql } from "@apollo/client";
-
+import { gql, GraphQLClient } from "graphql-request";
 
 type Post = {
     slug: string,
@@ -47,8 +45,11 @@ export default function Blog({ posts }: BlogPostsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const { data } = await client.query({
-        query: gql`
+    const client = new GraphQLClient(
+        'https://api-sa-east-1.hygraph.com/v2/cl6saouro0y2p01tb4j38akye/master'
+    );
+
+    const query = gql`
         query MyQuery {
             posts(orderBy: createdAt_DESC, first: 6) {
                 title
@@ -63,7 +64,8 @@ export const getStaticProps: GetStaticProps = async () => {
             }
         }
     `
-    })
+
+    const data = await client.request(query)
 
     const posts = data.posts.map(post => {
         return {
