@@ -18,7 +18,7 @@ export function SearchProvider({ children }: SearchProviderProps) {
     function searchResult(value: string) {
         const lowerPesquisa = value.toLowerCase()
         setCookie(undefined, 'search.value', lowerPesquisa, {
-            maxAge: 30 * 24 * 60 * 60,
+            maxAge: 60 * 60,
             path: '/',
         })
         setPesquisa(lowerPesquisa)
