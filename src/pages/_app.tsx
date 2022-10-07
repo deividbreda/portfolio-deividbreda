@@ -10,6 +10,7 @@ import { theme } from '../styles/theme'
 import { LoginProvider } from '../hooks/useLogin'
 import { ApolloProvider } from '@apollo/client'
 import { client } from '../services/apollo'
+import { SearchProvider } from '../hooks/useSearch'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -19,9 +20,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <LoginProvider>
-        <ApolloProvider client={client}>
-          <Component {...pageProps} />
-        </ApolloProvider>
+        <SearchProvider>
+          <ApolloProvider client={client}>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </SearchProvider>
       </LoginProvider>
     </ChakraProvider>
   )
