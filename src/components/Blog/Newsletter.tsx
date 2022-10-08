@@ -20,7 +20,6 @@ export function Newsletter() {
                             </Flex>
                             <Button w="100%" bg="gray.800" _hover={{ transform: 'scale(1.02)' }}> CADASTRAR </Button>
                         </FormControl>
-
                     </Flex>
                 </Flex>
             </Box>

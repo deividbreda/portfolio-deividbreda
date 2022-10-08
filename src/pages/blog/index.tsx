@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { useLogin } from "../../hooks/useLogin";
+import { useModalLogin } from "../../hooks/useModalLogin";
 import { HeaderLinks } from "../../components/Blog/HeaderLinks";
 import { About } from "../../components/Blog/About";
 import { Posts } from "../../components/Blog/Posts";
@@ -25,7 +25,7 @@ export interface BlogPostsProps {
 }
 
 export default function Blog({ posts }: BlogPostsProps) {
-    const { handleCloseModalLogin, modalLogin } = useLogin();
+    const { handleCloseModalLogin, modalLogin } = useModalLogin();
 
     return (
         <>

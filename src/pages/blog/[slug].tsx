@@ -9,7 +9,7 @@ import { Author } from "../../components/Blog/Post/Author";
 import { Comments } from "../../components/Blog/Post/Comments";
 import { Content } from "../../components/Blog/Post/Content";
 import { PostDetails } from "../../components/Blog/Post/PostDetails";
-import { useLogin } from "../../hooks/useLogin";
+import { useModalLogin } from "../../hooks/useModalLogin";
 
 import { serialize } from 'next-mdx-remote/serialize'
 
@@ -45,7 +45,7 @@ export interface PostCommentProps {
 }
 
 export default function Post({ post, comments }: PostProps) {
-    const { handleCloseModalLogin, modalLogin } = useLogin();
+    const { handleCloseModalLogin, modalLogin } = useModalLogin();
 
 
     return (
