@@ -3,11 +3,11 @@ import path from "path";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.query.secret !== process.env.HYGRAPH_TOKEN) {
-        return res.status(401).json({ message: "Token Inválido" });
+        return res.status(401).json({ message: "Erro: Token Inválido" });
     }
 
     if (!req.body) {
-        return res.status(422).json({ message: "Requisição Inválida" });
+        return res.status(422).json({ message: "Erro: Requisição Inválida" });
     }
 
     try {
