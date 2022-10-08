@@ -35,18 +35,14 @@ export interface PostProps {
 }
 
 type Comment = {
+    idcomment: string,
     name: string,
     commentDesc: string,
     data: string
 }
 
-export interface PostCommentProps {
-    comments: Comment[]
-}
-
 export default function Post({ post, comments }: PostProps) {
     const { handleCloseModalLogin, modalLogin } = useModalLogin();
-
 
     return (
         <>
@@ -60,7 +56,7 @@ export default function Post({ post, comments }: PostProps) {
             <PostDetails post={post} comments={comments} />
             <Content post={post} comments={comments} />
             <Author post={post} comments={comments} />
-            <Comments comments={comments} />
+            <Comments post={post} comments={comments} />
             <Newsletter />
             <Footer />
         </>
@@ -72,10 +68,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const queryComment = gql`
         query MyQuery($slug: String!) {
-            comments(where: {post: {slug: $slug}}) {
+            comments(where: {post: {slug: $slug}}, orderBy: publishedAt_DESC, stage: DRAFT) {
                 name
                 commentDescription
                 createdAt
+                id
             }
         }
     `
@@ -144,6 +141,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 month: 'long',
                 year: 'numeric'
             }),
+            idcomment: comment.id
         }
     }) 
 

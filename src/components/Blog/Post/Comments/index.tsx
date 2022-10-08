@@ -1,14 +1,38 @@
 import { Avatar, Box, Button, Flex, FormControl, Stack, Text, Textarea } from "@chakra-ui/react";
 import { useLogin } from "../../../../hooks/useLogin";
-import { PostCommentProps } from "../../../../pages/blog/[slug]";
+import { PostProps } from "../../../../pages/blog/[slug]";
 import { Comment } from "./Comment";
 
 import { MdLock } from "react-icons/md";
 import { useModalLogin } from "../../../../hooks/useModalLogin";
+import { FormEvent, useState } from "react";
 
-export function Comments({ comments }: PostCommentProps) {
+export function Comments({ comments, post }: PostProps) {
     const { user } = useLogin();
     const { handleOpenModalLogin } = useModalLogin()
+
+    const [ commentDescription, setCommentDescription ] = useState('')
+
+    async function handleComment(event: FormEvent){
+        event.preventDefault();
+
+        const slug = post.slug
+        const name = user
+
+        await fetch(`/api/comments/add`, {
+            method: "POST",
+            body: JSON.stringify({ commentDescription, slug, name }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+
+        setCommentDescription('')
+    }
+
+    function handleCancel(){
+        setCommentDescription('')
+    }
 
     return (
         <Stack bg="gray.200" py="48px">
@@ -34,35 +58,37 @@ export function Comments({ comments }: PostCommentProps) {
                     <Stack>
                         <Flex py="32px" gap={['16px', '32px']} align="flex-start">
                             <Avatar name={user} size={['md', 'lg']} />
-                            <FormControl>
-                                <Stack w="100%">
-                                    {!user ? (
-                                        <>
-                                            <Textarea isDisabled placeholder="Sua mensagem..." color="gray.800" bg="white" h="50px" w="100%" resize="none" />
-                                            <Flex justifyContent="flex-end" gap="8px">
-                                                <Text 
-                                                    display="flex" alignItems="center" 
-                                                    gap="6px" as="a"
-                                                    background="#1d3452"
-                                                    p="6px 12px"
-                                                    borderRadius="32px"
-                                                    onClick={handleOpenModalLogin}
-                                                > 
-                                                    <MdLock /> Identifique-se para comentar </Text>
-                                            </Flex>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Textarea placeholder="Sua mensagem..." color="gray.800" bg="white" h="50px" w="100%" resize="none" />
-                                            <Flex justifyContent="flex-end" gap="8px">
-                                                <Button bg="transparent" color="gray.800" fontWeight="400" _hover={{ color: 'red' }}> Cancelar </Button>
-                                                <Button type="submit" bg="gray.800" _hover={{ bg: '#0ea40e' }} > Enviar </Button>
-                                            </Flex>
-                                        </>
-                                    )}
+                            <Box w="100%" as="form" onSubmit={handleComment}>
+                                <FormControl>
+                                    <Stack w="100%">
+                                        {!user ? (
+                                            <>
+                                                <Textarea isDisabled placeholder="Sua mensagem..." color="gray.800" bg="white" h="50px" w="100%" resize="none" />
+                                                <Flex justifyContent="flex-end" gap="8px">
+                                                    <Text
+                                                        display="flex" alignItems="center"
+                                                        gap="6px" as="a"
+                                                        background="#1d3452"
+                                                        p="6px 12px"
+                                                        borderRadius="32px"
+                                                        onClick={handleOpenModalLogin}
+                                                    >
+                                                        <MdLock /> Identifique-se para comentar </Text>
+                                                </Flex>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Textarea value={commentDescription} onChange={(e) => setCommentDescription(e.target.value)} placeholder="Sua mensagem..." color="gray.800" bg="white" h="50px" w="100%" resize="none" />
+                                                <Flex justifyContent="flex-end" gap="8px">
+                                                    <Button onClick={handleCancel} bg="transparent" color="gray.800" fontWeight="400" _hover={{ color: 'red' }}> Cancelar </Button>
+                                                    <Button type="submit" bg="gray.800" _hover={{ bg: '#0ea40e' }} > Enviar </Button>
+                                                </Flex>
+                                            </>
+                                        )}
 
-                                </Stack>
-                            </FormControl>
+                                    </Stack>
+                                </FormControl>
+                            </Box>
                         </Flex>
                     </Stack>
 
@@ -70,7 +96,7 @@ export function Comments({ comments }: PostCommentProps) {
                         {comments?.map(comment => {
                             return (
                                 <Comment
-                                    key={comment.name}
+                                    key={comment.idcomment}
                                     comment={comment}
                                 />
                             )
