@@ -9,6 +9,7 @@ import { Footer } from "../../components/Blog/Footer";
 import { ModalLogin } from "../../components/Blog/ModalLogin";
 import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
+import { client } from "../../services/graphql";
 
 type Post = {
     slug: string,
@@ -45,10 +46,6 @@ export default function Blog({ posts }: BlogPostsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const client = new GraphQLClient(
-        'https://api-sa-east-1.hygraph.com/v2/cl6saouro0y2p01tb4j38akye/master'
-    );
-
     const query = gql`
         query MyQuery {
             posts(orderBy: createdAt_DESC, first: 6) {

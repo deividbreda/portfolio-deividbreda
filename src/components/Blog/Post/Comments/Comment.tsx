@@ -1,5 +1,4 @@
 import { Avatar, Flex, Stack, Text } from "@chakra-ui/react";
-import { PostCommentProps } from "../../../../pages/blog/[slug]";
 
 interface CommentProps {
     comment: {

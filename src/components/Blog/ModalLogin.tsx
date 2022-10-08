@@ -46,32 +46,32 @@ export function ModalLogin({ isOpen, onClose }: ModalLoginProps) {
             >
                 <MdClose />
             </Text>
-            <Flex gap="32px" alignItems="center" justifyContent="center" flexDirection="column">
+            <Flex gap={['12px' ,'32px']} alignItems="center" justifyContent="center" flexDirection="column">
                 <Box>
-                    <Text textAlign="center" fontWeight="600" fontSize="32px" color="gray.700"> Identifique-se </Text>     
+                    <Text textAlign="center" fontWeight="600" fontSize={['24px', '32px']} color="gray.700"> Identifique-se </Text>     
                 </Box>
 
                 <Box as="form" onSubmit={handleEntrar}>
                     <FormControl display="flex" gap="32px" flexDirection="column" isRequired>
                         <Stack gap="12px">
                             <Box>
-                                <FormLabel color="#1f57a3" fontWeight="600" fontSize="22"> E-mail </FormLabel>
+                                <FormLabel color="#1f57a3" fontWeight="600" fontSize={['16px', '22px']}> E-mail </FormLabel>
                                 <Flex position="relative" borderRadius="6px">
                                     <Text position="absolute" left="12px" zIndex="2" top="9px" fontSize="22px" color="gray.800"> <MdEmail /> </Text>
-                                    <Input pl="44px" color="gray.800" bg="gray.100" placeholder="E-mail..." onChange={(e) => setEmail(e.target.value)} />
+                                    <Input fontSize={['14px', '16px']} pl="44px" color="gray.800" bg="gray.100" placeholder="E-mail..." onChange={(e) => setEmail(e.target.value)} />
                                 </Flex>
-                                <FormHelperText> Insira um endereço de e-mail válido. </FormHelperText>
+                                <FormHelperText fontSize={['11', '14']}> Insira um endereço de e-mail válido. </FormHelperText>
                             </Box>
 
                             <Box>
-                                <FormLabel color="#1f57a3" fontWeight="600" fontSize="22"> Nome </FormLabel>
+                                <FormLabel color="#1f57a3" fontWeight="600" fontSize={['16px', '22px']}> Nome </FormLabel>
                                 <Flex position="relative" borderRadius="6px">
                                     <Text position="absolute" left="12px" zIndex="2" top="9px" fontSize="22px" color="gray.800"> <MdPerson /> </Text>
-                                    <Input pl="44px" color="gray.800" bg="gray.100" placeholder="Nome..." onChange={(e) => setNome(e.target.value)}/>
+                                    <Input fontSize={['14px', '16px']} pl="44px" color="gray.800" bg="gray.100" placeholder="Nome..." onChange={(e) => setNome(e.target.value)}/>
                                 </Flex>
                             </Box>
 
-                            <Checkbox defaultChecked color="#0b1f3a" size="md"> Quer receber minhas postagens por e-mail? </Checkbox>
+                            <Checkbox defaultChecked color="#0b1f3a" size={['sm', 'md']}> Quer receber meus posts por e-mail? </Checkbox>
                         </Stack>
                             
                         <Flex gap="16px">
