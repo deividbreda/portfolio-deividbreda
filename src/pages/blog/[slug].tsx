@@ -144,8 +144,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             idcomment: comment.id
         }
     }) 
-
-    console.log(comments)
     
     return {
         props: {
