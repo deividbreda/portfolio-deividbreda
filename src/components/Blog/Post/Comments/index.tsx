@@ -11,9 +11,11 @@ export function Comments({ comments, post }: PostProps) {
     const { user } = useLogin();
     const { handleOpenModalLogin } = useModalLogin()
 
-    const [ commentDescription, setCommentDescription ] = useState('')
+    const [commentDescription, setCommentDescription] = useState('')
 
-    async function handleComment(event: FormEvent){
+    const [tempComments, setTempComments] = useState([])
+
+    async function handleComment(event: FormEvent) {
         event.preventDefault();
 
         const slug = post.slug
@@ -28,9 +30,24 @@ export function Comments({ comments, post }: PostProps) {
         })
 
         setCommentDescription('')
+
+        let idNumber = 1;
+
+        const comment = {
+            id: idNumber++,
+            name,
+            commentDesc: commentDescription,
+            data: new Date().toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            }),
+        }
+
+        setTempComments([comment, ...tempComments])
     }
 
-    function handleCancel(){
+    function handleCancel() {
         setCommentDescription('')
     }
 
@@ -93,6 +110,20 @@ export function Comments({ comments, post }: PostProps) {
                     </Stack>
 
                     <Stack>
+                        {tempComments.length ? (
+                            <>
+                                {tempComments.map(tempComment => {
+                                    return (
+                                        <Comment
+                                            key={tempComment.id}
+                                            comment={tempComment}
+                                        />
+                                    )
+                                })}
+                            </>
+                        ) : (
+                            <> </>
+                        )}
                         {comments?.map(comment => {
                             return (
                                 <Comment

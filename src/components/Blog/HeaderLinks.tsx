@@ -16,7 +16,7 @@ export function HeaderLinks() {
 
     function handleLogout(){
         logoutUser()
-       
+        
     }
 
     return (

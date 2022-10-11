@@ -15,6 +15,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         await res.revalidate(path.join("/blog/", req.body.data.slug));
         return res.status(200).json({ revalidated: true });
     } catch (err) {
-        return res.status(500).json({message: req.body.data.slug});
+        return res.status(500).json({message: "Erro: Erro de Validação" });
     }
 }
