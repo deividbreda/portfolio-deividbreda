@@ -8,7 +8,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const mutation = gql`
          mutation CreateMemory($slug: String!, $name: String!, $commentDescription: String!) {
             createComment(
-                data: {name: $name, commentDescription: $commentDescription, post: {connect: {slug: $slug}}}
+                data: {name: $name, slug: $slug, commentDescription: $commentDescription, post: {connect: {slug: $slug}}}
             ) {
                 id
             }
