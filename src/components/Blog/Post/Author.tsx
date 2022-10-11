@@ -1,7 +1,14 @@
 import { Box, Flex, Image, Stack, Text } from "@chakra-ui/react";
-import { PostProps } from "../../../pages/blog/[slug]";
 
-export function Author({ post }: PostProps) {
+interface AuthorProps {
+    post: {
+        author: string,
+        bio: string,
+        avatar: string
+    }
+}
+
+export function Author({ post }: AuthorProps) {
     return (
         <Stack bg="gray.100" py="48px">
             <Box maxW="740px" mx="auto" px="20px" w="100%">

@@ -1,11 +1,10 @@
 import { Box, Button, Flex, Input, Text } from "@chakra-ui/react";
 import { FormEvent, useState } from "react";
-
-import { FaSearch } from "react-icons/fa";
 import { useSearch } from "../../hooks/useSearch";
-
 import { useRouter } from "next/router";
 import { destroyCookie } from 'nookies'
+
+import { FaSearch } from "react-icons/fa";
 
 export function About() {
     const router = useRouter();

@@ -7,7 +7,6 @@ interface PublicadosProps {
 }
 
 export function Publicados(props: PublicadosProps) {
-
     return (
         <div className={styles.publicado} key={props.link} data-aos="fade-up">
             <a href={props.link} target="_blank" rel="noreferrer"> <img src={props.img} alt="" /> </a>

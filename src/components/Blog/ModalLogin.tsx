@@ -55,12 +55,7 @@ export function ModalLogin({ isOpen, onClose }: ModalLoginProps) {
                     <FormControl display="flex" gap="32px" flexDirection="column" isRequired>
                         <Stack gap="12px">
                             <Box>
-                                <FormLabel color="#1f57a3" fontWeight="600" fontSize={['16px', '22px']}> E-mail </FormLabel>
-                                <Flex position="relative" borderRadius="6px">
-                                    <Text position="absolute" left="12px" zIndex="2" top="9px" fontSize="22px" color="gray.800"> <MdEmail /> </Text>
-                                    <Input fontSize={['14px', '16px']} pl="44px" color="gray.800" bg="gray.100" placeholder="E-mail..." onChange={(e) => setEmail(e.target.value)} />
-                                </Flex>
-                                <FormHelperText fontSize={['11', '14']}> Insira um endereço de e-mail válido. </FormHelperText>
+                                <Text color="#555" textAlign="center" pos="relative" _after={{ content: '""', pos: 'absolute', w: '100%', h: '2px', top: 'calc(50% - 1px)', right: '0', bg: '#c2c2c2' }}> <Text as="span" zIndex="2" bg="#ffffff" pos="relative" px={['12px','18px']} fontSize={['12px','16px']}> Ou acesse sem Login </Text> </Text>
                             </Box>
 
                             <Box>
@@ -71,7 +66,7 @@ export function ModalLogin({ isOpen, onClose }: ModalLoginProps) {
                                 </Flex>
                             </Box>
 
-                            <Checkbox defaultChecked color="#0b1f3a" size={['sm', 'md']}> Quer receber meus posts por e-mail? </Checkbox>
+                            
                         </Stack>
                             
                         <Flex gap="16px">

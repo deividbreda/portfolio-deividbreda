@@ -53,9 +53,9 @@ export default function Post({ post, comments }: PostProps) {
             <ModalLogin isOpen={modalLogin} onClose={handleCloseModalLogin} />
 
             <HeaderLinks />
-            <PostDetails post={post} comments={comments} />
-            <Content post={post} comments={comments} />
-            <Author post={post} comments={comments} />
+            <PostDetails post={post} />
+            <Content post={post} />
+            <Author post={post} />
             <Comments post={post} comments={comments} />
             <Newsletter />
             <Footer />

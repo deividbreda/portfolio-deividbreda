@@ -15,8 +15,12 @@ export function Comments({ comments, post }: PostProps) {
 
     const [tempComments, setTempComments] = useState([])
 
+    const [ isSubmitting, setIsSubmitting ] = useState(false)
+
     async function handleComment(event: FormEvent) {
         event.preventDefault();
+
+        setIsSubmitting(true)
 
         const slug = post.slug
         const name = user
@@ -45,6 +49,7 @@ export function Comments({ comments, post }: PostProps) {
         }
 
         setTempComments([comment, ...tempComments])
+        setIsSubmitting(false)
     }
 
     function handleCancel() {
@@ -95,10 +100,10 @@ export function Comments({ comments, post }: PostProps) {
                                             </>
                                         ) : (
                                             <>
-                                                <Textarea value={commentDescription} onChange={(e) => setCommentDescription(e.target.value)} placeholder="Sua mensagem..." color="gray.800" bg="white" h="50px" w="100%" resize="none" />
+                                                <Textarea required value={commentDescription} onChange={(e) => setCommentDescription(e.target.value)} placeholder="Sua mensagem..." color="gray.800" bg="white" h="50px" w="100%" resize="none" />
                                                 <Flex justifyContent="flex-end" gap="8px">
                                                     <Button onClick={handleCancel} bg="transparent" color="gray.800" fontWeight="400" _hover={{ color: 'red' }}> Cancelar </Button>
-                                                    <Button type="submit" bg="gray.800" _hover={{ bg: '#0ea40e' }} > Enviar </Button>
+                                                    <Button type="submit" bg="gray.800" _hover={{ bg: '#0ea40e' }} loadingText='Enviando...' isLoading={isSubmitting}> Comentar </Button>
                                                 </Flex>
                                             </>
                                         )}

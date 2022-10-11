@@ -3,9 +3,9 @@ import { githubApi } from "../../../../services/axios";
 
 import { Publicados } from "./Publicados";
 import { Repositorios } from "./Repositorios";
+import { HomeProjectsProps } from "../../../../pages";
 
 import styles from './styles.module.scss'
-import { useGetProjectsQuery } from "../../../../graphql/generated";
 
 export interface RepositorioProps {
     name: string,
@@ -15,10 +15,8 @@ export interface RepositorioProps {
     visibility: string,
 }
 
-export function GithubRepos() {
+export function Projetos({ publicados }: HomeProjectsProps) {
     const [repos, setRepos] = useState([])
-
-    const { data } = useGetProjectsQuery()
 
     useEffect(() => {
         githubApi.get('users/deividbreda/repos')
@@ -42,13 +40,13 @@ export function GithubRepos() {
                                 <h1> Publicados </h1>
                             </div>
                             <div className={styles.allPublicados}>
-                                {data?.publicProjects.map(projeto => {
+                                {publicados?.map(projeto => {
                                     return (
-                                        <Publicados 
+                                        <Publicados
                                             key={projeto.link}
                                             title={projeto.title}
                                             link={projeto.link}
-                                            img={projeto.img.url}
+                                            img={projeto.img}
                                         />
                                     );
                                 })}

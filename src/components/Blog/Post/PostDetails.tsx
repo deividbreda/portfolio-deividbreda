@@ -3,9 +3,17 @@ import Link from "next/link";
 
 import { FaChevronLeft } from "react-icons/fa";
 
-import { PostProps } from "../../../pages/blog/[slug]";
+export interface PostDetailsProps {
+    post: {
+        title: string,
+        image: string
+        category: string,
+        description: string,
+        data: string
+    }
+}
 
-export function PostDetails({ post }: PostProps) {
+export function PostDetails({ post }: PostDetailsProps) {
     return (
         <Box position="relative">
             <Image
@@ -50,7 +58,7 @@ export function PostDetails({ post }: PostProps) {
                                 </Text>
                             </ChakraLink>
                         </Link>
-                        <Text as="strong" fontSize={['32px','48px']} color="white"> {post.title} </Text>
+                        <Text as="strong" fontSize={['32px', '48px']} color="white"> {post.title} </Text>
                         <Text as="span"> {post.description} </Text>
                         <Text as="time" pt="32px" opacity="0.6" fontSize="12px"> {post.data} </Text>
                     </Stack>

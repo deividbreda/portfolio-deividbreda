@@ -1,4 +1,7 @@
 import Head from "next/head";
+import { GetStaticProps } from "next";
+import { gql } from "graphql-request";
+import { client } from "../../services/graphql";
 
 import { useModalLogin } from "../../hooks/useModalLogin";
 import { HeaderLinks } from "../../components/Blog/HeaderLinks";
@@ -7,9 +10,6 @@ import { Posts } from "../../components/Blog/Posts";
 import { Newsletter } from "../../components/Blog/Newsletter";
 import { Footer } from "../../components/Blog/Footer";
 import { ModalLogin } from "../../components/Blog/ModalLogin";
-import { GetStaticProps } from "next";
-import { gql, GraphQLClient } from "graphql-request";
-import { client } from "../../services/graphql";
 
 type Post = {
     slug: string,
