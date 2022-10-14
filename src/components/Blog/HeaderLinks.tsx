@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Link as ChakraLink, Text } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, Link as ChakraLink, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 import { FaLongArrowAltLeft } from "react-icons/fa";
@@ -7,16 +7,15 @@ import { MdLogout, MdPerson } from "react-icons/md";
 import { BiLogIn } from "react-icons/bi";
 import { useModalLogin } from "../../hooks/useModalLogin";
 import { useLogin } from "../../hooks/useLogin";
-import Router from "next/router";
+import { signOut, useSession } from "next-auth/react";
 
 export function HeaderLinks() {
     const { handleOpenModalLogin } = useModalLogin()
-
     const { user, logoutUser } = useLogin();
+    const { data: session } = useSession();
 
-    function handleLogout(){
+    function handleLogout() {
         logoutUser()
-        
     }
 
     return (
@@ -47,7 +46,38 @@ export function HeaderLinks() {
                         </ChakraLink>
                     </Link>
 
-                    {!user ? (
+                    {(user || session) ? (
+                        (user) ?
+                            <Flex alignItems="center" gap="20px">
+                                <Flex display="flex" alignItems="center" gap="8px">
+                                    <Avatar size="sm" name={user} />
+                                    <Text as="strong"> {user} </Text>
+                                </Flex>
+                                <Button
+                                    onClick={handleLogout}
+                                    display="flex" gap="8px" p="6px 12px"
+                                    h="unset" color="#091a31"
+                                    _hover={{ transform: 'translateX(8px)', color: 'red' }}
+                                >
+                                    Sair <MdLogout />
+                                </Button>
+                            </Flex>
+                        :
+                            <Flex alignItems="center" gap="20px">
+                                <Flex display="flex" alignItems="center" gap="8px">
+                                    <Avatar src={session.user.image} />
+                                    <Text as="strong"> {session.user.name} </Text>
+                                </Flex>
+                                <Button
+                                    onClick={() => signOut()}
+                                    display="flex" gap="8px" p="6px 12px"
+                                    h="unset" color="#091a31"
+                                    _hover={{ transform: 'translateX(8px)', color: 'red' }}
+                                >
+                                    Sair <MdLogout />
+                                </Button>
+                            </Flex>
+                    ) : (
                         <ChakraLink onClick={handleOpenModalLogin}
                             color="gray.900"
                             background="gray.200" p="8px 32px"
@@ -63,21 +93,7 @@ export function HeaderLinks() {
                         >
                             Identifique-se <BiLogIn fontSize={18} />
                         </ChakraLink>
-                    ) : (
-                        <Flex alignItems="center" gap="20px">
-                            <Flex display="flex" alignItems="center" gap="8px">
-                                <MdPerson fontSize="28px" /> 
-                                <Text as="strong"> {user} </Text>
-                            </Flex>
-                            <Button 
-                                onClick={handleLogout} 
-                                display="flex" gap="8px" p="6px 12px" 
-                                h="unset" color="#091a31"
-                                _hover={{ transform: 'translateX(8px)', color: 'red' }}
-                            > 
-                                Sair <MdLogout /> 
-                            </Button>
-                        </Flex>
+
                     )}
                 </Flex>
             </Box>

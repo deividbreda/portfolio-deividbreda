@@ -39,6 +39,7 @@ type Comment = {
     name: string,
     commentDesc: string,
     data: string
+    personImage: string,
 }
 
 export default function Post({ post, comments }: PostProps) {
@@ -73,6 +74,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 commentDescription
                 createdAt
                 id
+                commentPersonImage
             }
         }
     `
@@ -141,7 +143,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 month: 'long',
                 year: 'numeric'
             }),
-            idcomment: comment.id
+            idcomment: comment.id,
+            personImage: comment.commentPersonImage
         }
     }) 
     

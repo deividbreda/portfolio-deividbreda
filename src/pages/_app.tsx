@@ -12,6 +12,7 @@ import { ApolloProvider } from '@apollo/client'
 import { client } from '../services/apollo'
 import { SearchProvider } from '../hooks/useSearch'
 import { LoginProvider } from '../hooks/useLogin'
+import { SessionProvider } from 'next-auth/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -20,15 +21,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ChakraProvider theme={theme}>
-      <ModalLoginProvider>
-        <LoginProvider>
-          <SearchProvider>
-            <ApolloProvider client={client}>
-              <Component {...pageProps} />
-            </ApolloProvider>
-          </SearchProvider>
-        </LoginProvider>
-      </ModalLoginProvider>
+      <SessionProvider>
+        <ModalLoginProvider>
+          <LoginProvider>
+            <SearchProvider>
+              <ApolloProvider client={client}>
+                <Component {...pageProps} />
+              </ApolloProvider>
+            </SearchProvider>
+          </LoginProvider>
+        </ModalLoginProvider>
+      </SessionProvider>
     </ChakraProvider>
   )
 }
