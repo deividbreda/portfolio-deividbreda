@@ -60,12 +60,5 @@ export default NextAuth({
                 return false;
             }
         },
-
-        async session({ session }){
-            
-            console.log(session.user)
-            
-            return session
-        }
     }
 })
