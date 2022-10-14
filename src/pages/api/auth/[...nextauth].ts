@@ -32,11 +32,6 @@ export default NextAuth({
         TwitterProvider({
             clientId: process.env.TWITTER_CLIENT_ID,
             clientSecret: process.env.TWITTER_CLIENT_SECRET,
-            authorization: {
-                params: {
-                    scope: 'read:user',
-                }
-            }
         })
     ],
     secret: process.env.NEXTAUTH_SECRET,

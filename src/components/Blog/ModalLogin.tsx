@@ -65,7 +65,7 @@ export function ModalLogin({ isOpen, onClose }: ModalLoginProps) {
                                 </Button>
 
                                 <Button
-                                    bg="#4267b2"
+                                    bg="#1d9bf0"
                                     leftIcon={<FaTwitter />}
                                     transition="all .3s"
                                     onClick={() => signIn('twitter')}
