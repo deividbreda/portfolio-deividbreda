@@ -69,7 +69,7 @@ export function ModalLogin({ isOpen, onClose }: ModalLoginProps) {
                                     leftIcon={<FaTwitter />}
                                     transition="all .3s"
                                     onClick={() => signIn('twitter')}
-                                    _hover={{ filter: 'brightness(0.6)', transition: 'all .3s' }}> Facebook
+                                    _hover={{ filter: 'brightness(0.6)', transition: 'all .3s' }}> Twitter
                                 </Button>
 
                                 <Button
