@@ -7,7 +7,7 @@ import { useLogin } from "../../hooks/useLogin";
 import { useModalLogin } from "../../hooks/useModalLogin";
 
 import { MdPerson, MdClose } from "react-icons/md";
-import { FaGithub, FaFacebook, FaGoogle } from "react-icons/fa";
+import { FaGithub, FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 
 interface ModalLoginProps {
     isOpen: boolean,
@@ -60,13 +60,15 @@ export function ModalLogin({ isOpen, onClose }: ModalLoginProps) {
                                     bg="#e94235"
                                     leftIcon={<FaGoogle />}
                                     transition="all .3s"
+                                    onClick={() => signIn('google')}
                                     _hover={{ filter: 'brightness(0.6)', transition: 'all .3s' }}> Google
                                 </Button>
 
                                 <Button
                                     bg="#4267b2"
-                                    leftIcon={<FaFacebook />}
+                                    leftIcon={<FaTwitter />}
                                     transition="all .3s"
+                                    onClick={() => signIn('twitter')}
                                     _hover={{ filter: 'brightness(0.6)', transition: 'all .3s' }}> Facebook
                                 </Button>
 
