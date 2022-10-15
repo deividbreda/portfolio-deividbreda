@@ -18,7 +18,7 @@ interface BlogStarProps {
 export function Featured({ post }: BlogStarProps) {
     return (
 
-        <GridItem pos="relative">
+        <GridItem pos="relative" data-aos="flip-up">
             <Link href={`/blog/${post.slug}`} passHref>
                 <ChakraLink>
                     <Flex

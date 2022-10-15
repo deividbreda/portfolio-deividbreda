@@ -18,8 +18,17 @@ export function PostsList({ posts }: BlogPostsProps) {
                                 <FaChevronLeft />
                             </ChakraLink>
                         </Link>
-                        <Stack alignItems="center">
-                            <Text textAlign="center" fontSize="32px" fontWeight="bold"> Postagens </Text>
+                        <Stack alignItems="center" data-aos="zoom-in">
+                            <Text 
+                                as="strong" 
+                                textAlign="center" 
+                                fontSize="46px" 
+                                fontWeight="bold"
+                                pos="relative"
+                                _after={{ content: '""', h: '16px', w: '100%', pos: 'absolute', zIndex: '1', bg: '#1d3452', right: '0', bottom: '8px'}}
+                            > 
+                                <Text as="span" pos="relative" zIndex="2"> Postagens </Text> 
+                            </Text>
                             <Text> {posts.length} posts </Text>
                         </Stack>
                     </Flex>
@@ -29,7 +38,7 @@ export function PostsList({ posts }: BlogPostsProps) {
             <Box maxWidth="1170px" mx="auto" px="20px" w="100%">
                 <Grid py="64px" templateColumns={['repeat(1, 2fr)', 'repeat(1, 2fr)', 'repeat(4, 2fr)']} gap="28px">
                     {posts.map(post => (
-                        <GridItem key={post.slug}>
+                        <GridItem key={post.slug} data-aos="fade-up">
                             <Link href={`/blog/${post.slug}`} passHref>
                                 <ChakraLink>
                                     <Box

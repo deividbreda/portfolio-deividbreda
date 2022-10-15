@@ -8,10 +8,10 @@ import { BlogPostsProps } from "../../../pages/blog";
 export function Post({ posts }: BlogPostsProps) {
     return (
         <Stack gap="26px" alignItems="center">
-            <Text textAlign="center" color="#0b2242" fontSize="32px" lineHeight="1"> Posts Recentes </Text>
+            <Text data-aos="fade-right" textAlign="center" color="#0b2242" fontSize="32px" lineHeight="1"> Posts Recentes </Text>
             <Grid templateColumns={['repeat(1, 2fr)', 'repeat(1, 2fr)', 'repeat(3, 2fr)']} gap="48px">
                 {posts.map(post => (
-                    <GridItem key={post.slug}>
+                    <GridItem key={post.slug} data-aos="fade-up">
                         <Link href={`blog/${post.slug}`} passHref>
                             <ChakraLink>
                                 <Box
@@ -45,15 +45,18 @@ export function Post({ posts }: BlogPostsProps) {
                     </GridItem>
                 ))}
             </Grid>
-            <Link href="/blog/posts" passHref>
-                <ChakraLink 
-                    bg="#0b2242" borderRadius="32" p="8px 32px" 
-                    display="block" textDecor="none"
-                    _hover={{ textDecoration: 'none', bg: '#1d3452', transform: 'scale(1.08)' }}
-                >
-                    Ver todos os posts
-                </ChakraLink>
-            </Link>
+
+            <Box data-aos="zoom-in">
+                <Link href="/blog/posts" passHref>
+                    <ChakraLink
+                        bg="#0b2242" borderRadius="32" p="8px 32px"
+                        display="block" textDecor="none"
+                        _hover={{ textDecoration: 'none', bg: '#1d3452', transform: 'scale(1.08)' }}
+                    >
+                        Ver todos os posts
+                    </ChakraLink>
+                </Link>
+            </Box>
         </Stack>
     );
 }

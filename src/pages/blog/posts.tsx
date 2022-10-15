@@ -11,7 +11,7 @@ export default function Posts({ posts }: BlogPostsProps) {
     return (
         <>
             <Head>
-                <title> Posts | Deivid Breda </title>
+                <title> Posts | Blog | Deivid Breda </title>
             </Head>
 
             <HeaderLinks />
@@ -62,6 +62,5 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
             posts
         },
-        revalidate: 60
     }
 }

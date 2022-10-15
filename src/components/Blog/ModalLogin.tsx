@@ -8,6 +8,7 @@ import { useModalLogin } from "../../hooks/useModalLogin";
 
 import { MdPerson, MdClose } from "react-icons/md";
 import { FaGithub, FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
+import { ButtonsLogin } from "./ModalLoginButtons";
 
 interface ModalLoginProps {
     isOpen: boolean,
@@ -54,32 +55,8 @@ export function ModalLogin({ isOpen, onClose }: ModalLoginProps) {
 
                 <Box w="100%" as="form" onSubmit={handleEntrar}>
                     <FormControl isRequired>
-                        <Stack gap="16px">                 
-                            <Stack>
-                                <Button
-                                    bg="#e94235"
-                                    leftIcon={<FaGoogle />}
-                                    transition="all .3s"
-                                    onClick={() => signIn('google')}
-                                    _hover={{ filter: 'brightness(0.6)', transition: 'all .3s' }}> Google
-                                </Button>
-
-                                <Button
-                                    bg="#1d9bf0"
-                                    leftIcon={<FaTwitter />}
-                                    transition="all .3s"
-                                    onClick={() => signIn('twitter')}
-                                    _hover={{ filter: 'brightness(0.6)', transition: 'all .3s' }}> Twitter
-                                </Button>
-
-                                <Button
-                                    bg="#161b22"
-                                    leftIcon={<FaGithub />}
-                                    transition="all .3s"
-                                    onClick={() => signIn('github')}
-                                    _hover={{ filter: 'brightness(0.6)', transition: 'all .3s' }}> Github
-                                </Button>
-                            </Stack>
+                        <Stack gap="16px">
+                            <ButtonsLogin />
 
                             <Box>
                                 <Text

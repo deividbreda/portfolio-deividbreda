@@ -57,6 +57,8 @@ export function HeaderLinks() {
                                     onClick={handleLogout}
                                     display="flex" gap="8px" p="6px 12px"
                                     h="unset" color="#091a31"
+                                    fontSize="12px"
+                                    borderRadius="32px"
                                     _hover={{ transform: 'translateX(8px)', color: 'red' }}
                                 >
                                     Sair <MdLogout />
@@ -65,13 +67,15 @@ export function HeaderLinks() {
                         :
                             <Flex alignItems="center" gap="20px">
                                 <Flex display="flex" alignItems="center" gap="8px">
-                                    <Avatar src={session.user.image} />
+                                    <Avatar size="sm" src={session.user.image} />
                                     <Text as="strong"> {session.user.name} </Text>
                                 </Flex>
                                 <Button
                                     onClick={() => signOut()}
                                     display="flex" gap="8px" p="6px 12px"
                                     h="unset" color="#091a31"
+                                    fontSize="12px"
+                                    borderRadius="32px"
                                     _hover={{ transform: 'translateX(8px)', color: 'red' }}
                                 >
                                     Sair <MdLogout />

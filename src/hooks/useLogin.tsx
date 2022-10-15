@@ -26,7 +26,9 @@ export function LoginProvider({ children }: LoginProviderProps) {
     }
 
     function logoutUser(){
-        destroyCookie(null, 'user.name')
+        destroyCookie(null, 'user.name', {
+            path: '/'
+        })
         setUser('')
     }
 

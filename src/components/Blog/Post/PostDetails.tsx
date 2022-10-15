@@ -32,7 +32,7 @@ export function PostDetails({ post }: PostDetailsProps) {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <Stack maxW="740px" mx="auto" px="20px" w="100%">
+                    <Stack maxW="740px" mx="auto" px="20px" w="100%" data-aos="fade-right">
                         <Link href="/blog" passHref>
                             <ChakraLink mb="28px" fontSize="32px" w="32px" _hover={{ transform: 'translateX(-8px)' }}>
                                 <FaChevronLeft />
@@ -47,7 +47,7 @@ export function PostDetails({ post }: PostDetailsProps) {
                                     px="16px"
                                     borderRadius="32px"
                                     opacity="0.6"
-                                    fontSize="12px"
+                                    fontSize={['10px','12px']}
                                     transition="all .3s"
                                     _hover={{
                                         opacity: '1',
@@ -58,7 +58,7 @@ export function PostDetails({ post }: PostDetailsProps) {
                                 </Text>
                             </ChakraLink>
                         </Link>
-                        <Text as="strong" fontSize={['32px', '48px']} color="white"> {post.title} </Text>
+                        <Text as="strong" fontSize={['26px', '32px', '48px']} color="white"> {post.title} </Text>
                         <Text as="span"> {post.description} </Text>
                         <Text as="time" pt="32px" opacity="0.6" fontSize="12px"> {post.data} </Text>
                     </Stack>

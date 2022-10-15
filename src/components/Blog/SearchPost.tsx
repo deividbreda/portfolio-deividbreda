@@ -23,11 +23,11 @@ export function SearchPost({ posts }: BlogPostsProps) {
                                 <FaChevronLeft />
                             </ChakraLink>
                         </Link>
-                        <Stack alignItems="center" gap="12px">
+                        <Stack alignItems="center" gap="12px" data-aos="zoom-in">
                             <Text display="flex" flexDir="column" textAlign="center" fontSize={['14px','16px', '20px']}> 
                                 Você pesquisou por <Text as="strong" fontSize={['20px','32px', '48px']} line-height="1"> {pesquisa} </Text>  
                             </Text>
-                            <Text> {posts.length} posts encontrados </Text>
+                            <Text> {posts.length} {posts.length > 1 ? 'posts encontrados' : 'post encontrado' } </Text>
                         </Stack>
                     </Flex>
                 </Box>
@@ -36,7 +36,7 @@ export function SearchPost({ posts }: BlogPostsProps) {
             <Box maxWidth="1170px" mx="auto" px="20px" w="100%">
                 <Grid py="64px" templateColumns={['repeat(1, 2fr)', 'repeat(1, 2fr)', 'repeat(4, 2fr)']} gap="28px">
                     {posts.map(post => (
-                        <GridItem key={post.slug}>
+                        <GridItem key={post.slug} data-aos="fade-up">
                             <Link href={`/blog/${post.slug}`} passHref>
                                 <ChakraLink>
                                     <Box

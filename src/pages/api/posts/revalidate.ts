@@ -1,0 +1,22 @@
+import { NextApiRequest, NextApiResponse } from "next";
+import path from "path";
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+    if (req.query.secret !== process.env.HYGRAPH_TOKEN) {
+        return res.status(401).json({ message: "Erro: Token Inválido" });
+    }
+
+    if (!req.body) {
+        return res.status(422).json({ message: "Erro: Requisição Inválida" });
+    }
+
+    try {
+        await res.revalidate("/blog/posts");
+        await res.revalidate("/blog/pesquisa");
+        await res.revalidate("/blog");
+        return res.status(200).json({ revalidated: true });
+    } catch (err) {
+        return res.status(500).json({message: "Erro: Erro de Validação" });
+    }
+}

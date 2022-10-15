@@ -7,13 +7,13 @@ export function Newsletter() {
         <Box bg="gray.400" py="64px">
             <Box maxW="1170px" mx="auto" px="20px" w="100%">
                 <Flex flexDir={['column', 'column', 'row']} gap="32px" alignItems="center" justifyContent="space-between">
-                    <Flex flexDirection="column" gap="8px">
+                    <Flex flexDirection="column" gap="8px" data-aos="fade-right">
                         <Text color="gray.100" fontSize="28px" fontWeight="600"> Inscreva-se ao Newsletter </Text>
                         <Text color="gray.100" fontSize="16px" as="p"> Receba minhas postagens mais recentes diretamente no seu e-mail. </Text>
                     </Flex>
 
                     <Flex maxW="440px" w="100%">
-                        <FormControl display="flex" flexDirection="column" gap="12px">
+                        <FormControl display="flex" flexDirection="column" gap="12px" data-aos="zoom-in">
                             <Flex position="relative" bg="#dee7f1" borderRadius="6px">
                                 <Text position="absolute" left="12px" zIndex="2" top="9px" fontSize="22px" color="gray.800"> <MdEmail /> </Text>
                                 <Input pl="44px" color="gray.800" placeholder="Insira seu e-mail" />

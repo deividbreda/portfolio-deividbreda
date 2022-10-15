@@ -48,7 +48,7 @@ export default function Post({ post, comments }: PostProps) {
     return (
         <>
             <Head>
-                <title> {post.title} | Deivid Breda </title>
+                <title> {post.title} | Blog | Deivid Breda </title>
             </Head>
 
             <ModalLogin isOpen={modalLogin} onClose={handleCloseModalLogin} />

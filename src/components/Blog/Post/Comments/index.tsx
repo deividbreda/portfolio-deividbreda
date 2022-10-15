@@ -56,7 +56,7 @@ export function Comments({ comments, post }: PostProps) {
     }
 
     function getPersonImage() {
-        if(session){
+        if (session) {
             return session.user.image
         } else {
             return ""
@@ -127,6 +127,7 @@ export function Comments({ comments, post }: PostProps) {
                                                         background="#1d3452"
                                                         p="6px 12px"
                                                         borderRadius="32px"
+                                                        fontSize={['12px', '16px']}
                                                         onClick={handleOpenModalLogin}
                                                     >
                                                         <MdLock /> Identifique-se para comentar </Text>
@@ -139,29 +140,31 @@ export function Comments({ comments, post }: PostProps) {
                         </Flex>
                     </Stack>
 
-                    <Stack>
-                        {tempComments.length && (
-                            <>
-                                {tempComments.map(tempComment => {
-                                    return (
-                                        <Comment
-                                            key={tempComment.id}
-                                            comment={tempComment}
-                                        />
-                                    )
-                                })}
-                            </>
-                        )}
-                        
-                        {comments?.map(comment => {
-                            return (
-                                <Comment
-                                    key={comment.idcomment}
-                                    comment={comment}
-                                />
-                            )
-                        })}
-                    </Stack>
+                    {(tempComments.length || comments.length) &&
+                        <Stack>
+                            {tempComments.length && (
+                                <>
+                                    {tempComments.map(tempComment => {
+                                        return (
+                                            <Comment
+                                                key={tempComment.id}
+                                                comment={tempComment}
+                                            />
+                                        )
+                                    })}
+                                </>
+                            )}
+
+                            {comments?.map(comment => {
+                                return (
+                                    <Comment
+                                        key={comment.idcomment}
+                                        comment={comment}
+                                    />
+                                )
+                            })}
+                        </Stack>
+                    }
                 </Stack>
             </Box>
         </Stack>
