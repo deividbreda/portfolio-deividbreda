@@ -2,11 +2,12 @@ import { Avatar, Box, Button, Flex, FormControl, Stack, Text, Textarea } from "@
 import { useLogin } from "../../../../hooks/useLogin";
 import { PostProps } from "../../../../pages/blog/[slug]";
 import { Comment } from "./Comment";
-
-import { MdLock } from "react-icons/md";
 import { useModalLogin } from "../../../../hooks/useModalLogin";
 import { FormEvent, useState } from "react";
 import { useSession } from "next-auth/react";
+
+import { MdLock } from "react-icons/md";
+import { AiOutlineWarning } from "react-icons/ai";
 
 export function Comments({ comments, post }: PostProps) {
     const { user } = useLogin();
@@ -112,9 +113,14 @@ export function Comments({ comments, post }: PostProps) {
                                         {(user || session) ? (
                                             <>
                                                 <Textarea required value={commentDescription} onChange={(e) => setCommentDescription(e.target.value)} placeholder="Sua mensagem..." color="gray.800" bg="white" h="50px" w="100%" resize="none" />
-                                                <Flex justifyContent="flex-end" gap="8px">
-                                                    <Button onClick={handleCancel} bg="transparent" color="gray.800" fontWeight="400" _hover={{ color: 'red' }}> Cancelar </Button>
-                                                    <Button type="submit" bg="gray.800" _hover={{ bg: '#0ea40e' }} loadingText='Enviando...' isLoading={isSubmitting}> Comentar </Button>
+                                                <Flex justifyContent="flex-end" gap={['16px',  '16px', '32px']} alignItems={['flex-end' ,'flex-end' ,'center']} flexDir={['column' ,'column', 'row']}>
+                                                    {(user && commentDescription) &&
+                                                        <Text color="#f00" fontSize="12px" display="flex" alignItems="center" gap="6px"> <AiOutlineWarning fontSize="32px" /> Comentários sem Login só poderão ser apagados pelo Administrador! </Text>
+                                                    }
+                                                    <Flex gap="8px">
+                                                        <Button onClick={handleCancel} bg="transparent" color="gray.800" fontSize="14px" fontWeight="400" _hover={{ color: 'red' }}> Cancelar </Button>
+                                                        <Button type="submit" bg="gray.800" _hover={{ bg: '#0ea40e' }} fontSize="14px" loadingText='Enviando...' isLoading={isSubmitting}> Comentar </Button>
+                                                    </Flex>
                                                 </Flex>
                                             </>
                                         ) : (
