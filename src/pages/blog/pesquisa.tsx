@@ -7,12 +7,22 @@ import { HeaderLinks } from "../../components/Blog/HeaderLinks";
 import { useSearch } from "../../hooks/useSearch";
 import { client } from "../../services/graphql";
 import { SearchPost } from "../../components/Blog/SearchPost";
-import { Box } from "@chakra-ui/react";
 
 export default function Pesquisa({ posts }: BlogPostsProps) {
     const { pesquisa } = useSearch();
 
-    const filtroPesquisa = posts.filter((post) => post.title.toLowerCase().includes(pesquisa))
+    const filtroPesquisa = filtro()
+
+    function filtro(){
+        const filtroPesquisa = posts.filter((post) => post.title.toLowerCase().includes(pesquisa))
+        const filtroPesquisaCategory = posts.filter((post) => post.category.toLowerCase().includes(pesquisa))
+
+        if (filtroPesquisa.length) {
+            return filtroPesquisa
+        } else {
+            return filtroPesquisaCategory
+        }
+    }
 
     return (
         <>

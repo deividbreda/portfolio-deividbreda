@@ -6,8 +6,19 @@ import { BlogPostsProps } from "../../pages/blog";
 import { FaChevronLeft } from "react-icons/fa";
 
 import styles from './Posts/styles.module.scss'
+import { useRouter } from "next/router";
+import { useSearch } from "../../hooks/useSearch";
 
 export function PostsList({ posts }: BlogPostsProps) {
+    const router = useRouter();
+
+    const { searchResult } = useSearch();
+    
+    function handleSearchCategory(category: string){
+        searchResult(category)
+        router.push(`/blog/pesquisa`)
+    }
+
     return (
         <>
             <Box bgGradient="linear(to-r, gray.900, gray.700)">
@@ -56,6 +67,7 @@ export function PostsList({ posts }: BlogPostsProps) {
                                             transition="all .3s" fontSize="12px"
                                             bg="gray.100.transparent" display="inline" color="gray.800"
                                             p="4px 12px" borderRadius="32px" position="absolute"
+                                            as="a" onClick={() => handleSearchCategory(post.category)}
                                             top="5" left="5"> {post.category} </Text>
                                         <Flex
                                             height="158px" position="relative"

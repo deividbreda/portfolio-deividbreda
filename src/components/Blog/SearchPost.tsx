@@ -1,12 +1,9 @@
 import { Box, Flex, Grid, GridItem, Image, Link as ChakraLink, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import { useEffect } from "react";
 
 import { FaChevronLeft } from "react-icons/fa";
 import { useSearch } from "../../hooks/useSearch";
 import { BlogPostsProps } from "../../pages/blog";
-
-import { parseCookies } from 'nookies'
 
 import styles from './Posts/styles.module.scss'
 
@@ -25,7 +22,7 @@ export function SearchPost({ posts }: BlogPostsProps) {
                         </Link>
                         <Stack alignItems="center" gap="12px" data-aos="zoom-in">
                             <Text display="flex" flexDir="column" textAlign="center" fontSize={['14px','16px', '20px']}> 
-                                Você pesquisou por <Text as="strong" fontSize={['20px','32px', '48px']} line-height="1"> {pesquisa} </Text>  
+                                Você pesquisou por <Text css={{"&:first-letter": {textTransform: "uppercase",},}} as="strong" fontSize={['20px','32px', '48px']} line-height="1"> {pesquisa} </Text>  
                             </Text>
                             <Text> {posts.length} {posts.length > 1 ? 'posts encontrados' : 'post encontrado' } </Text>
                         </Stack>
