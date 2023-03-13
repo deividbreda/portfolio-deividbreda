@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { client } from "../../../services/graphql";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const variables: { id: string } = req.body;
+    const id:string = req.body;
 
     const mutation = gql`
         mutation DeleteComment($id: ID!) {
@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
     `
 
-    await client.request(mutation, variables)
+    await client.request(mutation, id)
 
     res.status(200).json({ success: true })
 }

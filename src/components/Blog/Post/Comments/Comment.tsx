@@ -20,7 +20,7 @@ export function Comment({ comment }: CommentProps) {
 
         await fetch(`/api/comments/delete`, {
             method: "POST",
-            body: JSON.stringify({ id }),
+            body: JSON.stringify(id),
             headers: {
                 "Content-Type": "application/json",
             },
