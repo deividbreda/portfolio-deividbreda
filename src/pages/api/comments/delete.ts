@@ -16,4 +16,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     await client.request(mutation, id)
 
     res.status(200).json({ success: true })
+    res.status(500).json({ id: id });
 }
